@@ -1,0 +1,12 @@
+{
+  "name": "FamilyConnect Global",
+  "short_name": "FamilyConnect",
+  "description": "Production-grade heritage mapping and AI-driven relative discovery platform.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ],
+  "theme_color": "#2563eb",
+  "background_color": "#f8fafc"
+}
