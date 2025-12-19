@@ -26,24 +26,24 @@ const Dashboard: React.FC<DashboardProps> = ({ members, onAddClick, onNavigateTo
 
   return (
     <div className="space-y-20 pb-24">
-      {/* Dynamic Discovery Status Bar */}
+      {/* Status Bar */}
       <div className="glass-panel rounded-[2.5rem] p-2 flex items-center shadow-xl border border-white/60 animate-in slide-in-from-top-full duration-1000">
          <div className="bg-indigo-600 backdrop-blur px-8 py-4 rounded-[2rem] flex items-center space-x-4 shadow-lg">
             <Radar className="w-5 h-5 text-white animate-pulse" />
-            <span className="text-[10px] font-black text-white uppercase tracking-heritage">Sentinel: Autonomous</span>
+            <span className="text-[10px] font-black text-white uppercase tracking-heritage">AI Helper: Active</span>
          </div>
          <div className="flex-grow flex items-center justify-center space-x-12 px-8">
             <div className="hidden md:flex items-center space-x-3 text-slate-400">
                <Database className="w-4 h-4 opacity-40" />
-               <span className="text-[9px] font-black uppercase tracking-heritage">Ledger Synced</span>
+               <span className="text-[9px] font-black uppercase tracking-heritage">Data Saved</span>
             </div>
             <div className="hidden lg:flex items-center space-x-3 text-slate-400">
                <History className="w-4 h-4 opacity-40" />
-               <span className="text-[9px] font-black uppercase tracking-heritage">Memory Inferring</span>
+               <span className="text-[9px] font-black uppercase tracking-heritage">Processing</span>
             </div>
          </div>
          <div className="bg-indigo-50 px-8 py-4 rounded-[2rem] text-[9px] font-black text-indigo-600 uppercase tracking-heritage border border-indigo-100">
-            Vault Gated
+            Secure & Private
          </div>
       </div>
 
@@ -52,13 +52,13 @@ const Dashboard: React.FC<DashboardProps> = ({ members, onAddClick, onNavigateTo
         <div className="space-y-10 max-w-2xl animate-in slide-in-from-left-10 duration-1000">
           <div className="flex items-center space-x-3 text-indigo-600">
             <Network className="w-6 h-6" />
-            <span className="text-[11px] font-black uppercase tracking-heritage">Archival Node v4.1</span>
+            <span className="text-[11px] font-black uppercase tracking-heritage">Your Family Tree</span>
           </div>
           <h2 className="text-8xl font-extrabold text-slate-900 serif tracking-tighter leading-[0.85]">
-            Map Your <br/><span className="gradient-text-hope italic">Destiny.</span>
+            Build Your <br/><span className="gradient-text-hope italic">Legacy.</span>
           </h2>
           <p className="text-slate-500 text-2xl font-medium leading-relaxed pr-8">
-            The heritage ledger identifies <span className="text-indigo-600 font-black">{members.length} unique nodes.</span> Our agent is currently scouting for historical intersections.
+            You've added <span className="text-indigo-600 font-black">{members.length} family member{members.length !== 1 ? 's' : ''}.</span> The AI is looking for people who might be your relatives.
           </p>
           <div className="flex flex-wrap gap-6 pt-4">
              <button 
@@ -66,7 +66,7 @@ const Dashboard: React.FC<DashboardProps> = ({ members, onAddClick, onNavigateTo
                 className="bg-indigo-600 text-white px-14 py-8 rounded-[3rem] font-bold shadow-3xl transition-all hover:scale-105 active:scale-95 flex items-center space-x-4 group"
               >
                 <Plus className="w-6 h-6 group-hover:rotate-90 transition-transform" />
-                <span className="text-lg uppercase tracking-widest font-black">Expand Ledger</span>
+                <span className="text-lg uppercase tracking-widest font-black">Add Family Member</span>
               </button>
               <div className="hidden sm:flex items-center px-10 py-6 glass-panel rounded-[3rem] space-x-4 border border-white/50 group hover:shadow-xl transition-all">
                  <Heart className="text-rose-500 w-7 h-7 group-hover:scale-110 transition-transform" />
@@ -87,15 +87,15 @@ const Dashboard: React.FC<DashboardProps> = ({ members, onAddClick, onNavigateTo
                </div>
                <div className="mt-auto space-y-12">
                   <div className="space-y-4">
-                    <p className="text-[11px] font-black uppercase tracking-heritage text-indigo-600">Archival Leads Identified</p>
+                    <p className="text-[11px] font-black uppercase tracking-heritage text-indigo-600">Potential Matches Found</p>
                     <div className="text-9xl font-black tracking-tighter serif leading-none text-slate-900">08<span className="text-indigo-600 text-5xl ml-4 tracking-normal font-bold animate-pulse">+</span></div>
                   </div>
-                  <p className="text-slate-500 font-bold text-xl leading-snug">Autonomous inferences currently pending verification in the Neural Hub.</p>
+                  <p className="text-slate-500 font-bold text-xl leading-snug">People who might be your relatives waiting for your review.</p>
                   <button 
                     onClick={onNavigateToMatches}
                     className="w-full bg-slate-900 text-white hover:bg-slate-800 font-black py-8 rounded-[2.5rem] transition-all flex items-center justify-center space-x-4 shadow-xl text-[10px] uppercase tracking-heritage active:scale-95"
                   >
-                    <span>Audit Discoveries</span>
+                    <span>View Matches</span>
                     <ArrowUpRight className="w-6 h-6" />
                   </button>
                </div>
