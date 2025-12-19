@@ -41,7 +41,9 @@ export const loadUserProfile = (): UserProfile => {
   try {
     const data = localStorage.getItem(USER_PROFILE_KEY);
     if (data) return JSON.parse(data);
-  } catch (e) {}
+  } catch (e) {
+    // Silent fail on parse error
+  }
   return {
     username: '',
     location: '',
