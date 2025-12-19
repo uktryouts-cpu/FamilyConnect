@@ -382,61 +382,61 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ members }) => {
   }, [members, vizMode]);
 
   return (
-    <div className="space-y-12 view-enter" aria-label="Interactive family tree visualization">
+    <div className="space-y-8 md:space-y-12 view-enter" aria-label="Interactive family tree visualization">
       {/* View Orchestrator */}
-      <div className="flex flex-col xl:flex-row items-stretch xl:items-center justify-between gap-8 px-4 animate-in slide-in-from-top-10 duration-700">
-        <div className="flex bg-slate-900/5 backdrop-blur-3xl p-2.5 rounded-[2.5rem] border border-slate-200/50 w-fit">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-8 px-0 animate-in slide-in-from-top-10 duration-700 overflow-x-auto">
+        <div className="flex bg-slate-900/5 backdrop-blur-3xl p-1.5 md:p-2.5 rounded-xl md:rounded-[2.5rem] border border-slate-200/50 w-fit shrink-0">
           <button 
             onClick={() => { setVizMode('horizontal'); resetView(); }}
-            className={`flex items-center space-x-3 px-10 py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-heritage transition-all duration-500 ${vizMode === 'horizontal' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
+            className={`flex items-center space-x-2 md:space-x-3 px-5 md:px-10 py-3 md:py-5 rounded-lg md:rounded-[2rem] text-[9px] md:text-[11px] font-black uppercase tracking-heritage transition-all duration-500 whitespace-nowrap ${vizMode === 'horizontal' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
           >
-            <Layout size={18} />
-            <span>Horizontal Map</span>
+            <Layout size={16} className="md:w-[18px] md:h-[18px]" />
+            <span className="hidden sm:inline">Horizontal Map</span>
           </button>
           <button 
             onClick={() => { setVizMode('radial'); resetView(); }}
-            className={`flex items-center space-x-3 px-10 py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-heritage transition-all duration-500 ${vizMode === 'radial' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
+            className={`flex items-center space-x-2 md:space-x-3 px-5 md:px-10 py-3 md:py-5 rounded-lg md:rounded-[2rem] text-[9px] md:text-[11px] font-black uppercase tracking-heritage transition-all duration-500 whitespace-nowrap ${vizMode === 'radial' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
           >
-            <Disc size={18} />
-            <span>Radial Core</span>
+            <Disc size={16} className="md:w-[18px] md:h-[18px]" />
+            <span className="hidden sm:inline">Radial Core</span>
           </button>
           <button 
             onClick={() => { setVizMode('treemap'); resetView(); }}
-            className={`flex items-center space-x-3 px-10 py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-heritage transition-all duration-500 ${vizMode === 'treemap' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
+            className={`flex items-center space-x-2 md:space-x-3 px-5 md:px-10 py-3 md:py-5 rounded-lg md:rounded-[2rem] text-[9px] md:text-[11px] font-black uppercase tracking-heritage transition-all duration-500 whitespace-nowrap ${vizMode === 'treemap' ? 'bg-white text-indigo-600 shadow-xl' : 'text-slate-500 hover:text-indigo-600'}`}
           >
-            <Layers size={18} />
-            <span>Legacy Treemap</span>
+            <Layers size={16} className="md:w-[18px] md:h-[18px]" />
+            <span className="hidden sm:inline">Legacy Treemap</span>
           </button>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2 md:gap-5 shrink-0">
            <button 
              onClick={handleExport}
-             className="flex items-center space-x-3 bg-white border border-slate-200 text-slate-600 px-10 py-5 rounded-[2rem] text-[11px] font-black uppercase tracking-heritage hover:bg-slate-50 transition-all shadow-xl hover:-translate-y-1"
+             className="flex items-center space-x-1 md:space-x-3 bg-white border border-slate-200 text-slate-600 px-4 md:px-10 py-2 md:py-5 rounded-lg md:rounded-[2rem] text-[8px] md:text-[11px] font-black uppercase tracking-heritage hover:bg-slate-50 transition-all shadow-xl hover:-translate-y-1"
            >
-             <Download size={18} />
-             <span>Export Registry</span>
+             <Download size={16} className="md:w-[18px] md:h-[18px]" />
+             <span className="hidden sm:inline">Export Registry</span>
            </button>
-           <button className="p-5 bg-indigo-600 text-white rounded-[2rem] shadow-2xl shadow-indigo-200 hover:scale-110 transition-transform active:scale-95">
+           <button className="p-3 md:p-5 bg-indigo-600 text-white rounded-lg md:rounded-[2rem] shadow-2xl shadow-indigo-200 hover:scale-110 transition-transform active:scale-95">
              <Share2 size={24} />
            </button>
         </div>
       </div>
 
-      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <div ref={containerRef} className="lg:col-span-8 bg-white rounded-[4.5rem] shadow-4xl border border-slate-100 overflow-hidden relative group h-[750px] perspective-1000 animate-in zoom-in duration-1000">
-          <div className="absolute top-12 left-12 z-10 flex flex-col space-y-5">
-            <div className="flex items-center space-x-4 bg-white/95 backdrop-blur-2xl px-8 py-4 rounded-3xl border border-slate-100 shadow-2xl">
-               <div className="w-2.5 h-2.5 bg-indigo-600 rounded-full animate-ping"></div>
-               <span className="text-[11px] font-black text-slate-800 uppercase tracking-heritage">Live Heritage Feed</span>
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12">
+        <div ref={containerRef} className="lg:col-span-8 bg-white rounded-2xl md:rounded-[4.5rem] shadow-4xl border border-slate-100 overflow-hidden relative group h-[400px] md:h-[500px] lg:h-[750px] perspective-1000 animate-in zoom-in duration-1000">
+          <div className="absolute top-4 md:top-8 lg:top-12 left-4 md:left-8 lg:left-12 z-10 flex flex-col space-y-3 md:space-y-5">
+            <div className="flex items-center space-x-2 md:space-x-4 bg-white/95 backdrop-blur-2xl px-4 md:px-8 py-2 md:py-4 rounded-xl md:rounded-3xl border border-slate-100 shadow-2xl">
+               <div className="w-1.5 h-1.5 md:w-2.5 md:h-2.5 bg-indigo-600 rounded-full animate-ping"></div>
+               <span className="text-[9px] md:text-[11px] font-black text-slate-800 uppercase tracking-heritage">Live Heritage Feed</span>
             </div>
             
-            <div className="flex flex-col bg-white/95 backdrop-blur-2xl p-3 rounded-[2rem] border border-slate-100 shadow-2xl space-y-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0">
-              <button onClick={zoomIn} className="p-4 hover:bg-slate-50 rounded-2xl transition-all text-slate-600 hover:text-indigo-600 active:scale-90" title="Zoom In">
-                <ZoomIn size={22} />
+            <div className="flex flex-col bg-white/95 backdrop-blur-2xl p-2 md:p-3 rounded-lg md:rounded-[2rem] border border-slate-100 shadow-2xl space-y-2 md:space-y-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-[-10px] group-hover:translate-x-0">
+              <button onClick={zoomIn} className="p-2 md:p-4 hover:bg-slate-50 rounded-lg md:rounded-2xl transition-all text-slate-600 hover:text-indigo-600 active:scale-90" title="Zoom In">
+                <ZoomIn size={18} className="md:w-[22px] md:h-[22px]" />
               </button>
-              <button onClick={zoomOut} className="p-4 hover:bg-slate-50 rounded-2xl transition-all text-slate-600 hover:text-indigo-600 active:scale-90" title="Zoom Out">
-                <ZoomOut size={22} />
+              <button onClick={zoomOut} className="p-2 md:p-4 hover:bg-slate-50 rounded-lg md:rounded-2xl transition-all text-slate-600 hover:text-indigo-600 active:scale-90" title="Zoom Out">
+                <ZoomOut size={18} className="md:w-[22px] md:h-[22px]" />
               </button>
               <div className="h-px bg-slate-100 mx-3"></div>
               <button onClick={resetView} className="p-4 hover:bg-slate-50 rounded-2xl transition-all text-slate-600 hover:text-indigo-600 active:scale-90" title="Reset View">
@@ -448,10 +448,10 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ members }) => {
             </div>
           </div>
           
-          <div className="absolute bottom-12 right-12 z-10 flex space-x-5 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-6 group-hover:translate-y-0">
-            <div className="bg-slate-900/95 backdrop-blur-3xl p-5 rounded-[2rem] flex items-center space-x-5 shadow-4xl border border-white/10">
-               <MousePointer2 size={18} className="text-indigo-400" />
-               <span className="text-[11px] font-black text-white uppercase tracking-heritage">Click to Inspect & Focus</span>
+          <div className="absolute bottom-4 md:bottom-8 lg:bottom-12 right-4 md:right-8 lg:right-12 z-10 flex space-x-3 md:space-x-5 opacity-0 group-hover:opacity-100 transition-all duration-700 translate-y-2 md:translate-y-6 group-hover:translate-y-0">
+            <div className="bg-slate-900/95 backdrop-blur-3xl p-3 md:p-5 rounded-lg md:rounded-[2rem] flex items-center space-x-2 md:space-x-5 shadow-4xl border border-white/10">
+               <MousePointer2 size={16} className="md:w-[18px] md:h-[18px] text-indigo-400" />
+               <span className="text-[9px] md:text-[11px] font-black text-white uppercase tracking-heritage">Click to Inspect & Focus</span>
             </div>
           </div>
 
@@ -462,112 +462,112 @@ const FamilyTree: React.FC<FamilyTreeProps> = ({ members }) => {
               className="fixed z-[400] pointer-events-none transform -translate-x-1/2 -translate-y-[120%] animate-in fade-in zoom-in slide-in-from-bottom-8 duration-500"
               style={{ left: tooltip.x, top: tooltip.y }}
             >
-              <div className="bg-slate-950/95 backdrop-blur-3xl text-white p-10 rounded-[4rem] shadow-5xl border border-white/10 w-80 overflow-hidden relative">
-                <div className="absolute top-0 right-0 p-10 opacity-5">
-                   <Fingerprint size={140} />
+              <div className="bg-slate-950/95 backdrop-blur-3xl text-white p-6 md:p-10 rounded-xl md:rounded-[4rem] shadow-5xl border border-white/10 w-72 md:w-80 overflow-hidden relative">
+                <div className="absolute top-0 right-0 p-6 md:p-10 opacity-5">
+                   <Fingerprint size={120} className="md:w-[140px] md:h-[140px]" />
                 </div>
-                <div className="flex items-center space-x-7 mb-8 pb-8 border-b border-white/10 relative z-10">
-                  <div className="w-24 h-24 bg-white/5 rounded-[2rem] flex items-center justify-center text-3xl font-bold shrink-0 overflow-hidden border border-white/10 shadow-3xl">
+                <div className="flex items-center space-x-4 md:space-x-7 mb-6 md:mb-8 pb-6 md:pb-8 border-b border-white/10 relative z-10">
+                  <div className="w-20 h-20 md:w-24 md:h-24 bg-white/5 rounded-lg md:rounded-[2rem] flex items-center justify-center text-2xl md:text-3xl font-bold shrink-0 overflow-hidden border border-white/10 shadow-3xl">
                     {tooltip.member.imageUrl ? (
                         <img src={tooltip.member.imageUrl} alt={tooltip.member.name} className="w-full h-full object-cover" />
                     ) : (
-                        <User className="w-12 h-12 opacity-30 text-indigo-400" />
+                        <User className="w-10 h-10 md:w-12 md:h-12 opacity-30 text-indigo-400" />
                     )}
                   </div>
-                  <div className="overflow-hidden space-y-2">
-                    <h4 className="font-bold text-2xl truncate serif tracking-tight">{tooltip.member.name}</h4>
-                    <p className="text-indigo-400 text-[11px] font-black uppercase tracking-heritage">{tooltip.member.relation}</p>
+                  <div className="overflow-hidden space-y-1 md:space-y-2">
+                    <h4 className="font-bold text-lg md:text-2xl truncate serif tracking-tight">{tooltip.member.name}</h4>
+                    <p className="text-indigo-400 text-[10px] md:text-[11px] font-black uppercase tracking-heritage">{tooltip.member.relation}</p>
                   </div>
                 </div>
-                <div className="space-y-5 relative z-10">
-                  <div className="flex items-center text-sm text-slate-300 font-bold">
-                    <Calendar className="w-5 h-5 mr-5 text-indigo-500" />
+                <div className="space-y-3 md:space-y-5 relative z-10">
+                  <div className="flex items-center text-xs md:text-sm text-slate-300 font-bold">
+                    <Calendar className="w-4 h-4 md:w-5 md:h-5 mr-3 md:mr-5 text-indigo-500 shrink-0" />
                     <span>{tooltip.member.birthDate || 'Temporal Node Undefined'}</span>
                   </div>
-                  <div className="flex items-center text-sm text-slate-300 font-bold">
-                    <MapPin className="w-5 h-5 mr-5 text-indigo-500" />
+                  <div className="flex items-center text-xs md:text-sm text-slate-300 font-bold">
+                    <MapPin className="w-4 h-4 md:w-5 md:h-5 mr-3 md:mr-5 text-indigo-500 shrink-0" />
                     <span className="truncate">{tooltip.member.location || 'Spatial Node Undefined'}</span>
                   </div>
                 </div>
               </div>
-              <div className="w-8 h-8 bg-slate-950/95 rotate-45 mx-auto -mt-4 border-r border-b border-white/10 shadow-5xl"></div>
+              <div className="w-6 h-6 md:w-8 md:h-8 bg-slate-950/95 rotate-45 mx-auto -mt-3 md:-mt-4 border-r border-b border-white/10 shadow-5xl"></div>
             </div>
           )}
         </div>
 
         {/* Intelligence Sidebar */}
-        <div className="lg:col-span-4 space-y-10 h-full animate-in slide-in-from-right-10 duration-1000">
-           <div className="bg-slate-900 rounded-[4.5rem] p-16 text-white shadow-4xl flex flex-col h-full relative overflow-hidden group">
-              <div className="absolute top-0 right-0 p-16 opacity-5 -mr-24 -mt-24 group-hover:scale-110 transition-transform duration-1200">
-                <History size={400} />
+        <div className="lg:col-span-4 space-y-6 md:space-y-10 h-full animate-in slide-in-from-right-10 duration-1000">
+           <div className="bg-slate-900 rounded-2xl md:rounded-[4.5rem] p-6 md:p-10 lg:p-16 text-white shadow-4xl flex flex-col h-full relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 md:p-16 opacity-5 -mr-12 md:-mr-24 -mt-12 md:-mt-24 group-hover:scale-110 transition-transform duration-1200">
+                <History size={300} className="md:w-[400px] md:h-[400px]" />
               </div>
 
-              <div className="relative z-10 flex flex-col h-full space-y-12">
+              <div className="relative z-10 flex flex-col h-full space-y-6 md:space-y-12">
                  <div className="flex items-center justify-between">
-                    <div className="bg-white/10 p-5 rounded-[2rem] border border-white/10">
-                       <Focus className="w-10 h-10 text-indigo-400" />
+                    <div className="bg-white/10 p-3 md:p-5 rounded-lg md:rounded-[2rem] border border-white/10">
+                       <Focus className="w-6 h-6 md:w-10 md:h-10 text-indigo-400" />
                     </div>
-                    <span className="text-[11px] font-black uppercase tracking-heritage opacity-40">Linage Inspector</span>
+                    <span className="text-[9px] md:text-[11px] font-black uppercase tracking-heritage opacity-40">Linage Inspector</span>
                  </div>
 
                  {focusedMember ? (
-                    <div className="space-y-12 animate-in fade-in slide-in-from-right-10 duration-700">
-                       <div className="space-y-6">
-                          <h3 className="text-6xl font-extrabold serif tracking-tighter leading-[0.9]">{focusedMember.name}</h3>
-                          <div className="flex items-center space-x-4">
-                             <span className="bg-indigo-600 px-6 py-3 rounded-full text-[11px] font-black uppercase tracking-heritage">{focusedMember.relation}</span>
-                             <span className="text-[11px] font-black uppercase tracking-heritage opacity-40">{focusedMember.privacyLevel}</span>
+                    <div className="space-y-8 md:space-y-12 animate-in fade-in slide-in-from-right-10 duration-700">
+                       <div className="space-y-4 md:space-y-6">
+                          <h3 className="text-3xl md:text-4xl lg:text-6xl font-extrabold serif tracking-tighter leading-[0.9]">{focusedMember.name}</h3>
+                          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:space-x-4">
+                             <span className="bg-indigo-600 px-4 md:px-6 py-2 md:py-3 rounded-full text-[9px] md:text-[11px] font-black uppercase tracking-heritage whitespace-nowrap">{focusedMember.relation}</span>
+                             <span className="text-[9px] md:text-[11px] font-black uppercase tracking-heritage opacity-40 whitespace-nowrap">{focusedMember.privacyLevel}</span>
                           </div>
                        </div>
                        
-                       <div className="space-y-8 bg-white/5 p-10 rounded-[3rem] border border-white/10 shadow-inner">
-                          <div className="flex items-center space-x-5">
-                             <MapPin className="w-6 h-6 text-indigo-400" />
+                       <div className="space-y-5 md:space-y-8 bg-white/5 p-6 md:p-10 rounded-xl md:rounded-[3rem] border border-white/10 shadow-inner">
+                          <div className="flex items-center space-x-3 md:space-x-5">
+                             <MapPin className="w-5 h-5 md:w-6 md:h-6 text-indigo-400 shrink-0" />
                              <div>
-                                <p className="text-[11px] font-black uppercase tracking-heritage opacity-40">Current Node</p>
-                                <p className="font-bold text-xl">{focusedMember.location || 'Unknown'}</p>
+                                <p className="text-[9px] md:text-[11px] font-black uppercase tracking-heritage opacity-40">Current Node</p>
+                                <p className="font-bold text-sm md:text-xl">{focusedMember.location || 'Unknown'}</p>
                              </div>
                           </div>
-                          <div className="flex items-center space-x-5">
-                             <RefreshCw className="w-6 h-6 text-emerald-400" />
+                          <div className="flex items-center space-x-3 md:space-x-5">
+                             <RefreshCw className="w-5 h-5 md:w-6 md:h-6 text-emerald-400 shrink-0" />
                              <div>
-                                <p className="text-[11px] font-black uppercase tracking-heritage opacity-40">Integrity Score</p>
-                                <p className="font-bold text-xl">94.2% Verified</p>
+                                <p className="text-[9px] md:text-[11px] font-black uppercase tracking-heritage opacity-40">Integrity Score</p>
+                                <p className="font-bold text-sm md:text-xl">94.2% Verified</p>
                              </div>
                           </div>
                        </div>
 
-                       <div className="space-y-6">
-                          <p className="text-base text-slate-400 leading-relaxed italic pr-4">
+                       <div className="space-y-4 md:space-y-6">
+                          <p className="text-sm md:text-base text-slate-400 leading-relaxed italic pr-0 md:pr-4">
                              "{focusedMember.notes || 'No archival notes present for this ledger node.'}"
                           </p>
                           <button 
                             onClick={() => { setFocusedMember(null); resetView(); }}
-                            className="w-full bg-white text-slate-900 font-extrabold py-7 rounded-[2.5rem] hover:bg-slate-100 transition-all flex items-center justify-center space-x-4 shadow-3xl group/btn active:scale-95"
+                            className="w-full bg-white text-slate-900 font-extrabold py-4 md:py-7 rounded-lg md:rounded-[2.5rem] hover:bg-slate-100 transition-all flex items-center justify-center space-x-2 md:space-x-4 shadow-3xl group/btn active:scale-95"
                           >
-                             <RotateCcw className="w-5 h-5 group-hover/btn:rotate-[-90deg] transition-transform" />
-                             <span>Clear Focus</span>
+                             <RotateCcw className="w-4 h-4 md:w-5 md:h-5 group-hover/btn:rotate-[-90deg] transition-transform" />
+                             <span className="text-sm md:text-base">Clear Focus</span>
                           </button>
                        </div>
                     </div>
                  ) : (
-                    <div className="flex-grow flex flex-col items-center justify-center text-center space-y-8 opacity-40 animate-pulse">
-                       <Search className="w-24 h-24 text-indigo-400" />
-                       <div className="space-y-3">
-                          <h4 className="text-2xl font-bold serif">System Idle</h4>
-                          <p className="text-sm px-16 leading-relaxed">Select a lineage node in the visualization layer to inspect encrypted metadata.</p>
+                    <div className="flex-grow flex flex-col items-center justify-center text-center space-y-6 md:space-y-8 opacity-40 animate-pulse">
+                       <Search className="w-16 h-16 md:w-24 md:h-24 text-indigo-400" />
+                       <div className="space-y-2 md:space-y-3">
+                          <h4 className="text-lg md:text-2xl font-bold serif">System Idle</h4>
+                          <p className="text-xs md:text-sm px-4 md:px-16 leading-relaxed">Select a lineage node in the visualization layer to inspect encrypted metadata.</p>
                        </div>
                     </div>
                  )}
 
-                 <div className="mt-auto grid grid-cols-2 gap-6">
-                    <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 text-center space-y-3 hover:bg-white/10 transition-colors">
-                       <ShieldCheck className="w-8 h-8 text-emerald-400 mx-auto" />
-                       <p className="text-[10px] font-black uppercase tracking-heritage opacity-60">GDPR Compliant</p>
+                 <div className="mt-auto grid grid-cols-2 gap-3 md:gap-6">
+                    <div className="bg-white/5 p-4 md:p-8 rounded-lg md:rounded-[2rem] border border-white/10 text-center space-y-2 md:space-y-3 hover:bg-white/10 transition-colors">
+                       <ShieldCheck className="w-6 h-6 md:w-8 md:h-8 text-emerald-400 mx-auto" />
+                       <p className="text-[8px] md:text-[10px] font-black uppercase tracking-heritage opacity-60">GDPR Compliant</p>
                     </div>
-                    <div className="bg-white/5 p-8 rounded-[2rem] border border-white/10 text-center space-y-3 hover:bg-white/10 transition-colors">
-                       <Award className="w-8 h-8 text-indigo-400 mx-auto" />
-                       <p className="text-[10px] font-black uppercase tracking-heritage opacity-60">Verified Link</p>
+                    <div className="bg-white/5 p-4 md:p-8 rounded-lg md:rounded-[2rem] border border-white/10 text-center space-y-2 md:space-y-3 hover:bg-white/10 transition-colors">
+                       <Award className="w-6 h-6 md:w-8 md:h-8 text-indigo-400 mx-auto" />
+                       <p className="text-[8px] md:text-[10px] font-black uppercase tracking-heritage opacity-60">Verified Link</p>
                     </div>
                  </div>
               </div>
